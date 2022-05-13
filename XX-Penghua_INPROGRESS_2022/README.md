@@ -1,6 +1,9 @@
-# Data from my research
-This repository hosts scientific data produced during my research. These are primarily data and input files related to my published articles.
+Supporting information for: an investigation currently in progress.
 
-The directories correspond to each paper.
+The input shell scripts for tensile simulations of VP structures using DFT calculations with the aid of VASP package. Here, the [VASPKIT][https://vaspkit.com/] package is used   to generate the KPOINTS and POTCAR files, and the [VASP OPT AXIS code][https://github.com/Chengcheng-Xiao/VASP_OPT_AXIS] is used to  fix stress tensor component(s) during tensile simulations.
 
-If you use this information, please cite the relevant paper.
+**Contents of repository**
+
+- Monolayer_VP: for monolayer VP.
+- Bilayer_VP: for bilayer VP.
+- Bulk_VP: for bulk VP.
