@@ -1,0 +1,66 @@
+#1 general
+variable        simname	index 0K
+log             log.${simname}.txt
+units           metal
+dimension       3
+atom_style      atomic
+neighbor        0.3 bin
+
+
+#2 structure
+boundary        p p p
+read_data       ${simname}.data
+mass            1 12.011
+mass            2 12.011
+region          left    block INF 1   INF INF INF INF
+region          bottom  block INF INF INF 2   INF INF
+region          right   block 245 INF INF INF INF INF
+region          up      block INF INF 254 INF INF INF
+group           bottom_layer  type 1
+group           up_layer      type 2
+
+group           rleft   region left
+group           rbottom region bottom
+group           rright  region right
+group           rup     region up
+
+group           bottom_layer_fixed_left intersect bottom_layer rleft
+group           bottom_layer_fixed_bottom intersect bottom_layer rbottom
+group           bottom_layer_fixed_right intersect bottom_layer rright
+group           bottom_layer_fixed_up intersect bottom_layer rup
+
+group           up_layer_fixed_left intersect up_layer rleft
+group           up_layer_fixed_bottom intersect up_layer rbottom
+
+
+#3 variables
+variable        Nloop equal 250
+
+#4 potentials
+pair_style      airebo 2.5 1 0
+pair_coeff      * * CH.airebo C C
+
+
+#5 initial optimize at 0 K
+thermo          100
+thermo_style    custom step etotal pxx pyy pzz
+min_style       cg
+minimize        0.0 1.0e-8 10000 10000
+write_dump      all custom 0.dump id type x y z fx fy fz
+
+
+#6 tension at 0 K using minimize
+fix             1 bottom_layer_fixed_left setforce 0 NULL NULL 
+fix             2 bottom_layer_fixed_bottom setforce NULL 0 NULL 
+fix             3 bottom_layer_fixed_right setforce 0 NULL NULL 
+fix             4 bottom_layer_fixed_up setforce NULL 0 NULL 
+fix             5 up_layer_fixed_left setforce 0 NULL NULL 
+fix             6 up_layer_fixed_bottom setforce NULL 0 NULL 
+variable        nr loop ${Nloop}
+label           loopmin
+change_box      all x delta 0 0.089190 y delta 0 0.09112 remap units box
+min_style       cg
+minimize        0.0 1.0e-8 10000 10000
+write_dump      all custom ${nr}.dump id type x y z fx fy fz
+next            nr
+jump            0K.in loopmin

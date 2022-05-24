@@ -1,0 +1,1 @@
+1. The python script "BLG_LRI.py" can postprocess the .dump file to generate the corresponding LRI.dump files for plotting the local registry index (LRI) heatmap in some specific biaxial strains. The LRI.dump file can be visuilized with the aid of [OVITO] (https://www.ovito.org/) package.
