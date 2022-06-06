@@ -1,0 +1,19 @@
+############# vdW setting
+IVDW = 11            # zero damping DFT-D3 method of Grimme
+
+############ the rest is a fairly standard setting 
+############ for this kind of system
+LCHARG = F 
+NELM = 60
+NSW = 300 
+IBRION = 2
+ISIF = 2
+ENCUT = 400
+PREC = Accurate
+EDIFF = 1e-5
+EDIFFG = -0.01 
+LREAL = Auto
+LWAVE = .FALSE.
+ISMEAR = 0
+ALGO = Normal
+NPAR = 8

@@ -1,0 +1,67 @@
+# LAMMPS inputfile for nano-indentation modeling on MoS2 nanosheets written by Penghua Ying (hityingph@163.com) 
+#1 General settings 
+units         metal
+atom_style    atomic
+neighbor      0.3 bin
+variable      simname index SiO2_annealing
+
+
+#2 Structure 
+boundary      p p p
+read_data	  ${simname}.data
+mass	       1	15.9994
+mass	       2	28.0855
+
+
+#3 variables
+variable    temperature equal 300
+variable    thigh equal 5000
+variable    pressure equal 0
+variable    seed equal 1024
+variable    tstep equal 0.0005
+variable    tdamp   equal 0.05
+variable    pdamp   equal 0.5
+
+
+#4 potentials
+pair_style    tersoff 
+pair_coeff    * * SiO.tersoff O Si
+#Tersoff potential from CMS, 2007, 39, 334-339
+
+
+#5 Minimize 
+thermo          200
+thermo_style    custom step temp etotal lx ly lz pxx pyy pzz
+
+fix             0 all box/relax aniso 0.0 
+min_style       cg
+minimize        0.0 1.0e-8 10000 100000
+unfix           0
+
+
+#6 Rise the temperature 
+reset_timestep  0
+dump            1 all custom 20000 ${simname}.lammpstrj id type x y z
+thermo          2000
+timestep        ${tstep}
+velocity        all create ${temperature} ${seed} rot yes dist gaussian
+fix             1 all nvt temp ${temperature} ${thigh} ${tdamp} 
+run             200000
+unfix           1
+
+
+#7 Equilibrated at high temperature
+fix             2 all nvt temp ${thigh} ${thigh} ${tdamp} 
+run             100000
+unfix           2
+
+
+#8 Cool down
+fix             3 all nvt temp ${thigh} ${temperature} ${tdamp} 
+run             2000000
+unfix           3
+
+#9 relax the stress 
+fix             3 all npt temp ${temperature} ${temperature} ${tdamp} aniso ${pressure} ${pressure} ${pdamp}
+run             100000
+write_data      a-SiO2.data
