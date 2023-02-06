@@ -1,0 +1,20 @@
+potential       Potential/nep.txt 0  
+
+time_step       1.0
+
+velocity        800
+ensemble        npt_ber 800 800 100 0 0 0 100 100 100 1000
+run             100000
+
+ensemble        npt_scr 800 800 100 0 0 0 100 100 100 1000
+deform          3.3e-5 1 0 0
+dump_thermo     100
+run             500000
+
+
+
+
+
+
+
+
