@@ -131,14 +131,11 @@ x_5e8 = tension_calc("5e8/x")
 y_5e8 = tension_calc("5e8/y")  
 x_1e9 = tension_calc("1e9/x")  
 y_1e9 = tension_calc("1e9/y")  
-quasi_x = tension_quasi("quasi_static/x")
-quasi_y = tension_quasi("quasi_static/y")
 clist = plt.get_cmap("rainbow")(np.linspace(0, 1, 6))
  
 figure(figsize=(15, 10))
 subplot(2, 1, 1)
 set_fig_properties([gca()])
-# plot(quasi_x["epsilon_x"] * 100, quasi_x["sigma_x"], ls = '-', color = clist[0], lw = lw, label=r"Quasi-static, $x$")
 for keys in x_1e7.keys():
     if keys == "run0":
         plot(x_1e7[keys]["epsilon_x"] * 100, x_1e7[keys]["sigma_x"], ls = '-', color = clist[1], lw = lw, label=r"$1\times 10^{7}$/s, $x$")
@@ -154,7 +151,6 @@ for keys in x_1e7.keys():
         plot(x_5e8[keys]["epsilon_x"] * 100, x_5e8[keys]["sigma_x"], ls = '-', color = clist[4], lw = lw)
         plot(x_1e9[keys]["epsilon_x"] * 100, x_1e9[keys]["sigma_x"], ls = '-', color = clist[5], lw = lw)
 
-# plot(quasi_y["epsilon_y"] * 100, quasi_y["sigma_y"], ls = '--', color = clist[0], lw = lw, label=r"Quasi-static, $y$")
 for keys in y_1e7.keys():
     if keys == "run0":
         plot(y_1e7[keys]["epsilon_y"] * 100, y_1e7[keys]["sigma_y"], ls = '--', color = clist[1], lw = lw, label=r"$1\times 10^{7}$/s, $y$")

@@ -238,22 +238,3 @@ title("(d)", fontsize=16)
 
 subplots_adjust(wspace = 0.35, hspace = 0.35)
 savefig("Tension_size.pdf", bbox_inches='tight')
-  
-
-
-# modulus_x = np.array([x_5nm["modulus_x_ave"], x_11nm["modulus_x_ave"], x_22nm["modulus_x_ave"], x_33nm["modulus_x_ave"], x_44nm["modulus_x_ave"]])
-# modulus_y = np.array([y_5nm["modulus_y_ave"], y_11nm["modulus_y_ave"], y_22nm["modulus_y_ave"], y_33nm["modulus_y_ave"], y_44nm["modulus_y_ave"]])
-        
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
