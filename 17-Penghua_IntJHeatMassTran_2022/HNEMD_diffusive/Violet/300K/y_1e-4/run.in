@@ -1,0 +1,20 @@
+potential   	Potential/nep.txt 0 
+
+minimize        sd 1.0e-12 1000
+
+velocity    	300
+ensemble    	npt_ber 300 300 0.01 0 0 0 0.0005
+time_step   	1.0
+dump_thermo 	100
+run         	100000
+
+ensemble 		nvt_nhc 300 300 100
+compute_hnemd 	1000 0 1.0e-4 0
+compute_shc   	10 500 1 500 100
+run           	2000000
+
+
+
+
+
+

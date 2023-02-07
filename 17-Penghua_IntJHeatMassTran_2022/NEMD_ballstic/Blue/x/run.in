@@ -1,0 +1,14 @@
+potential    Potential/nep.txt 0
+velocity     300
+
+ensemble     nvt_ber 300 300 100
+fix          0
+time_step    1 
+dump_thermo  1000        
+run          100000
+
+ensemble     heat_lan 300 100 10 1 3 
+fix          0
+compute      0 10 100 temperature
+compute_shc  10 500 0 500 100 group 0 2
+run          2000000
