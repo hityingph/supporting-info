@@ -1,0 +1,18 @@
+potential   	./nep.txt 
+
+velocity    	300
+ensemble        npt_ber 300 300 100 0 10 1000
+time_step       0.5
+run             200000
+
+ensemble        nve
+compute_hac     1 200000 1
+run             20000000
+
+
+
+
+
+
+
+
