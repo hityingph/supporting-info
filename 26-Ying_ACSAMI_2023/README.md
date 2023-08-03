@@ -1,4 +1,4 @@
-Supporting Information for: "Sub-micrometer Phonon Mean Free Paths in Metal-Organic Frameworks Revealed by Machine-Learning Molecular Dynamics Simulations", Penghua Ying et al., In press in ACS AMI. doi:https://doi.org/10.1021/acsami.3c07770
+Supporting Information for: "Sub-micrometer Phonon Mean Free Paths in Metal-Organic Frameworks Revealed by Machine-Learning Molecular Dynamics Simulations", Penghua Ying et al., *ACS Appl. Mater. Interfaces*, **2023**, 15, 36412-36422. DOI: [10.1021/acsami.3c07770](https://doi.org/10.1021/acsami.3c07770)
 
 This document contains the details for the input files used for lattice thermal conductivity calculations of MOF-5, ZIF-8, and HKUST-1 using molecular dynamics (MD) simulations methods implemented in the [GPUMD, version 3.7](https://github.com/brucefan1983/GPUMD) package. The complete input and output files for the NEP training and testing are freely accessible at this GitLab repository: [https://gitlab.com/brucefan1983/nep-data](https://gitlab.com/brucefan1983/nep-data).
 
