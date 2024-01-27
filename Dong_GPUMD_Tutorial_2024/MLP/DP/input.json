@@ -1,0 +1,72 @@
+{
+    "model": {
+        "type_map": [
+            "C"
+        ],
+        "descriptor": {
+            "type": "se_a",
+            "rcut_smth": 0.5,
+            "rcut": 6.0,
+            "neuron": [
+                25,
+                50,
+                100
+            ],
+            "axis_neuron": 12,
+            "resnet_dt": false,
+            "seed": 489892897589892
+        },
+        "fitting_net": {
+            "neuron": [
+                240,
+                240,
+                240
+            ],
+            "resnet_dt": true,
+            "seed": 348948965
+        }
+    },
+    "learning_rate": {
+        "start_lr": 0.001,
+        "stop_lr": 1e-08,
+        "decay_steps": 5000
+    },
+    "loss": {
+        "start_pref_e": 0.02,
+        "limit_pref_e": 1,
+        "start_pref_f": 1000,
+        "limit_pref_f": 1,
+        "start_pref_v": 0.0,
+        "limit_pref_v": 0.0
+    },
+    "training": {
+        "numb_steps": 4000000,
+        "seed": 5628988930,
+        "disp_file": "lcurve.out",
+        "disp_freq": 1000,
+        "save_freq": 1000,
+        "save_ckpt": "model.ckpt",
+        "disp_training": true,
+        "time_training": true,
+        "profiling": false,
+        "training_data": {
+            "systems": [
+                "./train_dataset/C2",
+                "./train_dataset/C31",
+                "./train_dataset/C32"
+            ],
+            "auto_prob": "prob_sys_size",
+            "set_prefix": "set",
+            "batch_size": "auto"
+        },
+	"validation_data":{
+	    "systems":		[
+            "./test_dataset/C2",
+            "./test_dataset/C31",
+            "./test_dataset/C32"
+        ],
+	    "batch_size":	1,
+	    "numb_btch":	3
+       }
+    }
+}

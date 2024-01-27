@@ -1,0 +1,17 @@
+potential    ../../0.Train/nep.txt
+velocity     300
+
+ensemble     nvt_nhc 300 300 100
+fix          0
+time_step    1         
+run          100000
+
+ensemble     heat_lan 300 100 50 1 12 
+fix          0
+compute      0 10 100 temperature jp
+run          2000000
+
+
+
+
+
