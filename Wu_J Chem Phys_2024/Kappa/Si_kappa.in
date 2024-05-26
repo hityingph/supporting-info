@@ -1,0 +1,52 @@
+###lammps script for calculating thermo conductivity of Si using dp potential (hityingph@163.com 2022/9/1)
+### Basic setup ###
+variable 		simname index Si_kappa
+variable    	T equal 300
+units       	metal
+boundary		p p p
+timestep 		0.001 #1fs
+atom_style  	atomic
+
+
+### Structure ###
+read_data       ${simname}.data  
+
+
+### Potentials ###
+pair_style      deepmd graph-compress.pb
+pair_coeff     	* *
+
+
+###equilibration run###
+thermo          1000
+thermo_style 	custom step temp etotal pxx pyy pzz lx ly lz
+
+velocity        all create ${T} ${randseed} mom yes rot no
+dump            dump1 all atom 10000 dump.lammpstrj
+fix 			npt1 all npt temp ${T} ${T} 0.1 iso 0 0 1.0
+run				100000
+unfix       	npt1
+
+fix             nvt1 all nvt temp ${T} ${T} 0.1
+run             100000
+unfix           nvt1
+undump          dump1
+
+### thermal conductivity calculation ###
+reset_timestep  0
+compute			KE  all ke/atom
+compute			PE  all pe/atom
+compute			V   all centroid/stress/atom NULL virial
+compute			J   all heat/flux KE PE V
+
+variable		Ns  equal  10
+variable		Nc  equal  20000
+variable    	Np  equal  ${Ns}*${Nc}*5
+
+fix				nve1 all nve
+#fix            lan1 all langevin ${T} ${T} 40 seed ${randseed} zero yes #add additional force error using langevin thermostat (40 ps)
+fix 			hac1 all ave/correlate ${Ns} ${Nc} ${Np} c_J[1] c_J[2] c_J[3] type auto file hac.txt
+
+thermo_style 	custom step temp etotal pxx pyy pzz lx ly lz
+run				${Np}	
+
