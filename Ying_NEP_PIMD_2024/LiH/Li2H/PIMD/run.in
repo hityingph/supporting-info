@@ -1,0 +1,27 @@
+potential   nep.txt
+velocity    300
+
+ensemble    pimd 40 300 300 100 0 0 0 53.4059 53.4059 53.4059 2000
+dump_thermo 10
+run        20000
+
+ensemble    pimd 40 400 400 100 0 0 0 53.4059 53.4059 53.4059 2000
+dump_thermo 10
+run         20000
+
+ensemble    pimd 40 500 500 100 0 0 0 53.4059 53.4059 53.4059 2000
+dump_thermo 10
+run         20000
+
+ensemble    pimd 40 600 600 100 0 0 0 53.4059 53.4059 53.4059 2000
+dump_thermo 10
+run         20000
+
+ensemble    pimd 40 700 700 100 0 0 0 53.4059 53.4059 53.4059 2000
+dump_thermo 10
+run         20000
+
+ensemble    pimd 40 800 800 100 0 0 0 53.4059 53.4059 53.4059 2000
+dump_thermo 10
+run         20000
+

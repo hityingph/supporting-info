@@ -1,0 +1,76 @@
+potential       ./nep.txt 
+dftd3           pbe 12 6
+
+time_step       0.5
+
+velocity    	100
+ensemble        pimd 64 100 100 100 0 10 1000
+run             40000
+
+ensemble        pimd 64 100 100 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 125 125 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 150 150 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 175 175 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 200 200 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 225 225 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 250 250 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 275 275 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 300 300 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 325 325 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 350 350 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 375 375 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 400 400 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 425 425 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 450 450 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 475 475 100 0 10 1000
+dump_thermo     200
+run             20000
+
+ensemble        pimd 64 500 500 100 0 10 1000
+dump_thermo     200
+run             20000

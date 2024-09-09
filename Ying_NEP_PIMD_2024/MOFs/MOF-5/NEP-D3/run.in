@@ -1,0 +1,76 @@
+potential       ./nep.txt 
+dftd3           pbe 12 6
+
+time_step       0.5
+
+velocity    	100
+ensemble        npt_ber 100 100 100 0 10 1000
+run             400000
+
+ensemble        npt_ber 100 100 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 125 125 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 150 150 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 175 175 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 200 200 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 225 225 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 250 250 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 275 275 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 300 300 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 325 325 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 350 350 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 375 375 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 400 400 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 425 425 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 450 450 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 475 475 100 0 10 1000
+dump_thermo     200
+run             200000
+
+ensemble        npt_ber 500 500 100 0 10 1000
+dump_thermo     200
+run             200000
